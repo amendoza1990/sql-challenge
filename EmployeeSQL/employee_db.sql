@@ -76,17 +76,16 @@ SELECT * FROM titles
 
 --Data Analysis
 
---List the following details of each employee: employee number, last name, first name, sex, and salary.
+--1. List the following details of each employee: employee number, last name, first name, sex, and salary.
 SELECT employees.emp_no, employees.last_name, employees.first_name, employees.sex, salaries.salary
 FROM employees
 JOIN salaries
 ON salaries.emp_no = employees.emp_no;
 
-
-
-
---List first name, last name, and hire date for employees who were hired in 1986.
-
+--2. List first name, last name, and hire date for employees who were hired in 1986.
+SELECT first_name, last_name, hire_date
+FROM employees
+WHERE hire_date LIKE '%/1986';
 
 --List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.
 
