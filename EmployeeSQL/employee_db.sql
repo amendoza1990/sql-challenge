@@ -76,28 +76,35 @@ SELECT * FROM titles
 
 --Data Analysis
 
---1. List the following details of each employee: employee number, last name, first name, sex, and salary.
-SELECT employees.emp_no, employees.last_name, employees.first_name, employees.sex, salaries.salary
-FROM employees
-JOIN salaries
-ON salaries.emp_no = employees.emp_no;
+--1. List the following details of each employee: 
+--   employee number, last name, first name, sex, and salary.
+SELECT e.emp_no, e.last_name, e.first_name, e.sex, s.salary
+FROM employees e
+JOIN salaries s
+ON s.emp_no = e.emp_no;
 
 --2. List first name, last name, and hire date for employees who were hired in 1986.
 SELECT first_name, last_name, hire_date
 FROM employees
 WHERE hire_date LIKE '%/1986';
 
---3.List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.
-SELECT dept_manager.dept_no, departments.dept_name, dept_manager.emp_no, employees.last_name, employees.first_name
-FROM dept_manager
-LEFT JOIN departments
-ON dept_manager.dept_no = departments.dept_no
-LEFT JOIN employees
-ON dept_manager.emp_no = employees.emp_no;
+--3.List the manager of each department with the following information: 
+--  department number, department name, the manager's employee number, last name, first name.
+SELECT dm.dept_no, d.dept_name, dm.emp_no, e.last_name, e.first_name
+FROM dept_manager dm
+LEFT JOIN departments d
+ON dm.dept_no = d.dept_no
+LEFT JOIN employees e
+ON dm.emp_no = e.emp_no;
 
-
---4.List the department of each employee with the following information: employee number, last name, first name, and department name.
-
+--4.List the department of each employee with the following information: 
+--  employee number, last name, first name, and department name.
+SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
+FROM employees e
+LEFT JOIN dept_emp de
+ON e.emp_no = de.emp_no
+LEFT JOIN departments d
+ON de.dept_no = d.dept_no;
 
 --5.List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
 
